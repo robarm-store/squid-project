@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta name="author" content="RobArm Armenia, RobArm Russia">
     <meta name="credits" content="RobArm Armenia Group. Armen Minasian as director. Credits to Adam, Yulia, Adilya">
     <meta charset="UTF-8">
@@ -9,138 +9,141 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="./RobArmLogo.png" width="64" height="64">
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        display: flex;
-      }
-      #orderForm {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        width: 300px;
-        text-align: center;
-      }
-      h2, h3 {
-        margin-bottom: 10px;
-        color: #333;
-      }
-      label {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #eee;
-        padding: 10px;
-        margin: 5px 0;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      input[type="checkbox"] {
-        transform: scale(1.2);
-      }
-      input[type="text"] {
-        width: calc(100% - 20px);
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        text-align: center;
-      }
-      #totalPrice {
-        font-size: 1.5em;
-        font-weight: bold;
-        color: #27ae60;
-      }
-      button {
-        background: #27ae60;
-        color: white;
-        border: none;
-        padding: 10px;
-        font-size: 1em;
-        border-radius: 5px;
-        cursor: pointer;
-        width: 100%;
-        margin-top: 10px;
-        transition: background 0.3s ease;
-      }
-      button:hover {
-        background: #219150;
-      }
-      form h1{
-        font-family: copperplate, 'Cinzel';
-        font-size: 40px;
-      }
-    </style>
-  </head>
-  <body>
-    <form id="orderForm" action="https://formspree.io/f/mldgyrbg" method="POST">
-      <h1>Rob<span style="color:red">A</span><span style="color:blue;">r</span><span style="color:orange;">m</span></h1>
-      <h2>Squid Project.</h2><br>
-      <h2>Select Items:</h2>
-      <label>
-        <span>Ddakji (350 dr.)</span>
-        <input type="checkbox" class="item" name="ddakji" value="350">
-      </label>
-      <label>
-        <span>Gonggi (550 dr.)</span>
-        <input type="checkbox" class="item" name="gonggi" value="550">
-      </label>
-      <label>
-        <span>Flying Stones (350 dr.)</span>
-        <input type="checkbox" class="item" name="flying_stones" value="350">
-      </label>
-      <label>
-        <input type="text" name="user_name" id="inputt" placeholder="Name and Classroom *required" required>
-      </label>
-      <h3>Promo Code:</h3>
-      <input type="text" id="promoCode" name="promo_code" placeholder="Enter promo code">
-      <h3>Total: <span id="totalPrice">0.00 dr</span></h3>
-      <button type="submit">Order Now</button><br><br>
-      <button onclick="goto()">Click "Go back" after submitting and then click here.</button>
-    </form>
-    <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    let checkboxes = document.querySelectorAll(".item");
-    let promoInput = document.getElementById("promoCode");
-    let totalSpan = document.getElementById("totalPrice");
-    let usernameInput = document.getElementById("inputt"); // Get username input field
-
-    function updateTotal() {
-      let total = 0;
-      checkboxes.forEach(box => {
-        if (box.checked) {
-          total += parseFloat(box.value);
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
         }
-      });
+        #orderForm {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h2, h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #eee;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="checkbox"] {
+            transform: scale(1.2);
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        #totalPrice {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #27ae60;
+        }
+        button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #219150;
+        }
+        form h1 {
+            font-family: copperplate, 'Cinzel';
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <form id="orderForm" action="https://formspree.io/f/mldgyrbg" method="POST">
+        <h1>Rob<span style="color:red">A</span><span style="color:blue;">r</span><span style="color:orange;">m</span></h1>
+        <h2>Squid Project.</h2><br>
+        <h2>Select Items:</h2>
+        <label>
+            <span>Ddakji (350 dr.)</span>
+            <input type="checkbox" class="item" name="ddakji" value="350">
+        </label>
+        <label>
+            <span>Gonggi (550 dr.)</span>
+            <input type="checkbox" class="item" name="gonggi" value="550">
+        </label>
+        <label>
+            <span>Flying Stones (350 dr.)</span>
+            <input type="checkbox" class="item" name="flying_stones" value="350">
+        </label>
+        <label>
+            <input type="text" name="user_name" id="username" placeholder="Name and Classroom *required" required>
+        </label>
+        <h3>Promo Code:</h3>
+        <input type="text" id="promoCode" name="promo_code" placeholder="Enter promo code">
+        <h3>Total: <span id="totalPrice">0.00 dr</span></h3>
+        <button type="submit">Order Now</button><br><br>
+        <button type="button" onclick="saveOrderData()">Click "Go back" after submitting and then click here.</button>
+    </form>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let checkboxes = document.querySelectorAll(".item");
+            let promoInput = document.getElementById("promoCode");
+            let totalSpan = document.getElementById("totalPrice");
+            let usernameInput = document.getElementById("username");
 
-      let promoCode = promoInput.value.trim().toUpperCase();
-      if (promoCode === "LETTHEGAMESBEGIN") {
-        total *= 0.9;
-        total = Math.ceil(total / 10) * 10;
-      }
+            function updateTotal() {
+                let total = 0;
+                checkboxes.forEach(box => {
+                    if (box.checked) {
+                        total += parseFloat(box.value);
+                    }
+                });
 
-      totalSpan.textContent = total.toFixed(2) + " dr";
-    }
+                let promoCode = promoInput.value.trim().toUpperCase();
+                if (promoCode === "LETTHEGAMESBEGIN") {
+                    total *= 0.9;
+                    total = Math.ceil(total / 10) * 10;
+                }
 
-    checkboxes.forEach(box => box.addEventListener("change", updateTotal));
-    promoInput.addEventListener("input", updateTotal);
-    updateTotal();
+                totalSpan.textContent = total.toFixed(2) + " dr";
+            }
 
-    // Fix: Store values correctly on button click
-    window.goto = function() {
-      let total = totalSpan.textContent; // Get total as string
-      let username = usernameInput.value.trim(); // Get username input value
+            checkboxes.forEach(box => box.addEventListener("change", updateTotal));
+            promoInput.addEventListener("input", updateTotal);
+            updateTotal();
 
-      localStorage.setItem("total", total);
-      localStorage.setItem("username", username);
-    }
-  });
-</script>
-
-  </body>
+            window.saveOrderData = function() {
+                let total = totalSpan.textContent;
+                let username = usernameInput.value.trim();
+                if (!username) {
+                    alert("Please enter your Name and Classroom first!");
+                    return;
+                }
+                localStorage.setItem("total", total);
+                localStorage.setItem("username", username);
+                window.location.href = "submit.html"; 
+            };
+        });
+    </script>
+</body>
 </html>
