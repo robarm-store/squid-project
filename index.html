@@ -98,7 +98,7 @@
       <h3>Promo Code:</h3>
       <input type="text" id="promoCode" name="promo_code" placeholder="Enter promo code">
       <h3>Total: <span id="totalPrice">0.00 dr</span></h3>
-      <button type="submit">Order Now</button><br><br><br>
+      <button type="submit" onclick="goto()">Order Now</button><br><br><br>
     </form>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
@@ -125,8 +125,11 @@
         
         checkboxes.forEach(box => box.addEventListener("change", updateTotal));
         promoInput.addEventListener("input", updateTotal);
-        updateTotal(); // Ensure total updates on load
+        updateTotal();
       });
+      function goto(){
+        window.location.href = 'submit.html'
+      }
     </script>
   </body>
 </html>
