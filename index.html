@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./RobArmLogo.png">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+      }
+      #orderForm {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+      }
+      h2, h3 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+      label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #eee;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="checkbox"] {
+        transform: scale(1.2);
+      }
+      input[type="text"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+      }
+      #totalPrice {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #27ae60;
+      }
+      button {
+        background: #27ae60;
+        color: white;
+        border: none;
+        padding: 10px;
+        font-size: 1em;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
+        transition: background 0.3s ease;
+      }
+      button:hover {
+        background: #219150;
+      }
+      form h1{
+        font-family: copperplate, 'Cinzel';
+        font-size: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="orderForm" action="https://formspree.io/f/mldgyrbg" method="POST">
+      <h1>Rob<span style="color:red">A</span><span style="color:blue;">r</span><span style="color:orange;">m</span></h1>
+      <h2>Squid Project.</h2><br>
+      <h2>Select Items:</h2>
+      <label>
+        <span>Ddakji (350 dr.)</span>
+        <input type="checkbox" class="item" name="ddakji" value="350">
+      </label>
+      <label>
+        <span>Gonggi (550 dr.)</span>
+        <input type="checkbox" class="item" name="gonggi" value="550">
+      </label>
+      <label>
+        <span>Flying Stones (350 dr.)</span>
+        <input type="checkbox" class="item" name="flying_stones" value="350">
+      </label>
+      <label>
+        <input type="text" name="user_name" placeholder="Name and Classroom *required" required>
+      </label>
+      <h3>Promo Code:</h3>
+      <input type="text" id="promoCode" name="promo_code" placeholder="Enter promo code">
+      <h3>Total: <span id="totalPrice">0.00 dr</span></h3>
+      <button type="submit">Order Now</button><br><br><br>
+    </form>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        let checkboxes = document.querySelectorAll(".item");
+        let promoInput = document.getElementById("promoCode");
+        let totalSpan = document.getElementById("totalPrice");
+        
+        function updateTotal() {
+          let total = 0;
+          checkboxes.forEach(box => {
+            if (box.checked) {
+              total += parseFloat(box.value);
+            }
+          });
+          
+          let promoCode = promoInput.value.trim().toUpperCase();
+          if (promoCode === "1") {
+            total *= 0.9; // 10% off
+            total = Math.ceil(total / 10) * 10;
+          }
+          
+          totalSpan.textContent = total.toFixed(2) + " dr";
+        }
+        
+        checkboxes.forEach(box => box.addEventListener("change", updateTotal));
+        promoInput.addEventListener("input", updateTotal);
+        updateTotal(); // Ensure total updates on load
+      });
+    </script>
+  </body>
+</html>
