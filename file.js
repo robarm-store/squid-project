@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
           });
           
           let promoCode = promoInput.value.trim().toUpperCase();
-          if (promoCode === "1") {
-            total *= 0.9; // 10% off
+          if (promoCode === "LETTHEGAMESBEGIN") {
+            total *= 0.9;
             total = Math.ceil(total / 10) * 10;
           }
           
