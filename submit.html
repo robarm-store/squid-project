@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta name="author" content="RobArm Armenia, RobArm Russia">
     <meta name="credits" content="RobArm Armenia Group. Armen Minasian as director. Credits to Adam, Yulia, Adilya">
     <meta charset="UTF-8">
@@ -8,29 +8,34 @@
     <title>RobArm | Squid Project</title>
     <link rel="icon" type="image/png" href="./RobArmLogo.png" width="64" height="64">
     <style>
-      body{
-        font-family: arial;
-        text-align: center;
-        align-items: center;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <img src="./RobArmLogo.png" width="180" height="180">
     <br><br>
     <h2 id="thankyou"></h2>
     <br><br><br>
-    <h3>We hope you&apos;ll come again. RobArm Armenia Team.</h3>
+    <h3>We hope you'll come again. RobArm Armenia Team.</h3>
     <footer>
-      <p>&copy; 2025, RobArm Armenia&trade;. All rights reserved.</p>
+        <p>&copy; 2025, RobArm Armenia&trade;. All rights reserved.</p>
     </footer>
+
     <script>
-  document.addEventListener("DOMContentLoaded", function() {
-      let total = localStorage.getItem("total") || "0 dr";
-      let username = localStorage.getItem("username") || "Customer";
-      let tysm = document.getElementById("thankyou");
-      tysm.textContent = `Thank you for your purchase, ${username}. Your order will be delivered next Monday if it is a school day. Prepare your ${total} cash to pay.`;
-  });
+        document.addEventListener("DOMContentLoaded", function() {
+            let total = localStorage.getItem("total") || "0 dr";
+            let username = localStorage.getItem("username") || "Customer";
+            document.getElementById("thankyou").textContent = `Thank you for your purchase, ${username}. Your order will be delivered next Monday if it is a school day. Prepare your ${total} cash to pay.`;
+        });
     </script>
-  </body>
+</body>
 </html>
