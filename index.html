@@ -95,43 +95,14 @@
         <input type="checkbox" class="item" name="flying_stones" value="350">
       </label>
       <label>
-        <input type="text" name="user_name" placeholder="Name and Classroom *required" required>
+        <input type="text" name="user_name" id="inputt" placeholder="Name and Classroom *required" required>
       </label>
       <h3>Promo Code:</h3>
       <input type="text" id="promoCode" name="promo_code" placeholder="Enter promo code">
       <h3>Total: <span id="totalPrice">0.00 dr</span></h3>
       <button type="submit" onclick="goto()">Order Now</button><br><br><br>
     </form>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        let checkboxes = document.querySelectorAll(".item");
-        let promoInput = document.getElementById("promoCode");
-        let totalSpan = document.getElementById("totalPrice");
-        
-        function updateTotal() {
-          let total = 0;
-          checkboxes.forEach(box => {
-            if (box.checked) {
-              total += parseFloat(box.value);
-            }
-          });
-          
-          let promoCode = promoInput.value.trim().toUpperCase();
-          if (promoCode === "1") {
-            total *= 0.9; // 10% off
-            total = Math.ceil(total / 10) * 10;
-          }
-          
-          totalSpan.textContent = total.toFixed(2) + " dr";
-        }
-        
-        checkboxes.forEach(box => box.addEventListener("change", updateTotal));
-        promoInput.addEventListener("input", updateTotal);
-        updateTotal();
-      });
-      function goto(){
-        window.location.href = 'submit.html'
-      }
+    <script src="file.js">
     </script>
   </body>
 </html>
