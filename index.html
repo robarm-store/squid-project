@@ -100,8 +100,8 @@
       <h3>Promo Code:</h3>
       <input type="text" id="promoCode" name="promo_code" placeholder="Enter promo code">
       <h3>Total: <span id="totalPrice">0.00 dr</span></h3>
-      <button type="submit" onclick="goto()">Order Now</button><br><br>
-      <a href="./submit.html">Click "Go back" after submitting and then click here.</a>
+      <button type="submit">Order Now</button><br><br>
+      <button onclick="goto()">Click "Go back" after submitting and then click here.</button>
     </form>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
@@ -125,14 +125,16 @@
           }
           
           totalSpan.textContent = total.toFixed(2) + " dr";
-          localStorage.setItem("total", total);
-          localStorage.setItem("username", username);
         }
         
         checkboxes.forEach(box => box.addEventListener("change", updateTotal));
         promoInput.addEventListener("input", updateTotal);
         updateTotal();
       });
+      function goto(){
+        localStorage.setItem("total", total);
+        localStorage.setItem("username", username);
+      }
     </script>
   </body>
 </html>
