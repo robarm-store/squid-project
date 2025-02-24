@@ -103,7 +103,33 @@
       <button type="submit" onclick="goto()">Order Now</button><br><br>
       <a href="./submit.html">Click "Go back" after submitting and then click here.</a>
     </form>
-    <script src="file.js">
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        let checkboxes = document.querySelectorAll(".item");
+        let promoInput = document.getElementById("promoCode");
+        let totalSpan = document.getElementById("totalPrice");
+        
+        function updateTotal() {
+          let total = 0;
+          checkboxes.forEach(box => {
+            if (box.checked) {
+              total += parseFloat(box.value);
+            }
+          });
+          
+          let promoCode = promoInput.value.trim().toUpperCase();
+          if (promoCode === "LETTHEGAMESBEGIN") {
+            total *= 0.9;
+            total = Math.ceil(total / 10) * 10;
+          }
+          
+          totalSpan.textContent = total.toFixed(2) + " dr";
+        }
+        
+        checkboxes.forEach(box => box.addEventListener("change", updateTotal));
+        promoInput.addEventListener("input", updateTotal);
+        updateTotal();
+      });
     </script>
   </body>
 </html>
