@@ -104,37 +104,43 @@
       <button onclick="goto()">Click "Go back" after submitting and then click here.</button>
     </form>
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        let checkboxes = document.querySelectorAll(".item");
-        let promoInput = document.getElementById("promoCode");
-        let totalSpan = document.getElementById("totalPrice");
-        
-        function updateTotal() {
-          let total = 0;
-          let username = document.getElementById("inputt").value;
-          checkboxes.forEach(box => {
-            if (box.checked) {
-              total += parseFloat(box.value);
-            }
-          });
-          
-          let promoCode = promoInput.value.trim().toUpperCase();
-          if (promoCode === "LETTHEGAMESBEGIN") {
-            total *= 0.9;
-            total = Math.ceil(total / 10) * 10;
-          }
-          
-          totalSpan.textContent = total.toFixed(2) + " dr";
+  document.addEventListener("DOMContentLoaded", function() {
+    let checkboxes = document.querySelectorAll(".item");
+    let promoInput = document.getElementById("promoCode");
+    let totalSpan = document.getElementById("totalPrice");
+    let usernameInput = document.getElementById("inputt"); // Get username input field
+
+    function updateTotal() {
+      let total = 0;
+      checkboxes.forEach(box => {
+        if (box.checked) {
+          total += parseFloat(box.value);
         }
-        
-        checkboxes.forEach(box => box.addEventListener("change", updateTotal));
-        promoInput.addEventListener("input", updateTotal);
-        updateTotal();
       });
-      function goto(){
-        localStorage.setItem("total", total);
-        localStorage.setItem("username", username);
+
+      let promoCode = promoInput.value.trim().toUpperCase();
+      if (promoCode === "LETTHEGAMESBEGIN") {
+        total *= 0.9;
+        total = Math.ceil(total / 10) * 10;
       }
-    </script>
+
+      totalSpan.textContent = total.toFixed(2) + " dr";
+    }
+
+    checkboxes.forEach(box => box.addEventListener("change", updateTotal));
+    promoInput.addEventListener("input", updateTotal);
+    updateTotal();
+
+    // Fix: Store values correctly on button click
+    window.goto = function() {
+      let total = totalSpan.textContent; // Get total as string
+      let username = usernameInput.value.trim(); // Get username input value
+
+      localStorage.setItem("total", total);
+      localStorage.setItem("username", username);
+    }
+  });
+</script>
+
   </body>
 </html>
