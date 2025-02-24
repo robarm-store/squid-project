@@ -25,14 +25,12 @@
       <p>&copy; 2025, RobArm Armenia&trade;. All rights reserved.</p>
     </footer>
     <script>
-      <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let total = localStorage.getItem("total");
-            let username = localStorage.getItem("username");
-            let tysm = document.getElementById("thankyou");
-            tysm.textContent = 'Thank you for your purchase, ' + username + '. Your Order Will be delivered on next Monday if it is a school day. Prepare your ' + total + ' dram cash to pay.';
-        });
-    </script>
+  document.addEventListener("DOMContentLoaded", function() {
+      let total = localStorage.getItem("total") || "0 dr";
+      let username = localStorage.getItem("username") || "Customer";
+      let tysm = document.getElementById("thankyou");
+      tysm.textContent = `Thank you for your purchase, ${username}. Your order will be delivered next Monday if it is a school day. Prepare your ${total} cash to pay.`;
+  });
     </script>
   </body>
 </html>
